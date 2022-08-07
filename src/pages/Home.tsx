@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, AlertButton, StyleSheet, View } from 'react-native';
 
 import { Header } from '../components/Header';
 import { Task, TasksList } from '../components/TasksList';
@@ -37,9 +37,19 @@ export function Home() {
   }
 
   function handleRemoveTask(id: number) {
-    setTasks(oldTasks => oldTasks.filter(task => {
-      return task.id !== id;
-    }));
+    Alert.alert("Remover item", "Tem certeza que você deseja remover esse item?", [
+      {
+        text: "Não"
+      },
+      {
+        text: "Sim",
+        onPress: () => {
+          setTasks(oldTasks => oldTasks.filter(task => {
+            return task.id !== id;
+          }));
+        }
+      }
+    ]);
   }
 
   return (
