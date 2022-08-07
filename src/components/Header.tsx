@@ -17,7 +17,7 @@ export function Header({ tasksCounter }: HeaderProps) {
     } else {
       setTasksCounterText("tarefas");
     }
-  }, []);
+  }, [tasksCounter]);
   
   return (
     <View style={styles.container}>
